@@ -1,0 +1,64 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "flexable-ai",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health",
+        "description": "배포·모니터링용. 버전 없는 경로로 두고 인증 없이 응답한다.",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "UP",
+            "title": "Status"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "modelVersion": {
+            "type": "string",
+            "title": "Modelversion"
+          },
+          "dataVersion": {
+            "type": "string",
+            "title": "Dataversion"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "version",
+          "modelVersion",
+          "dataVersion"
+        ],
+        "title": "HealthResponse"
+      }
+    }
+  }
+}
